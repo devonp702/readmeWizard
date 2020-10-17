@@ -1,6 +1,18 @@
 // function to generate markdown for README
 function generateMarkdown(data) {
-  var licence = data.licence;
+  var license = data.license;
+  var contributing = data.contributing;
+  var lSection =`
+  * I am using the ${license} license. 
+  ![license](https://img.shields.io/badge/license-${license}-green)
+  `
+  if (contributing === "Contributor Covenant"){
+  var cSection = `This Code of Conduct is adapted from the [Contributor Covenant][homepage],
+  version 2.0, available at
+  https://www.contributor-covenant.org/version/2/0/code_of_conduct.html.`
+  } else {
+    cSection=`Please view my other documentation for my contribution guidelines.`
+  }
 
   return `# ${data.title}
 
@@ -26,7 +38,9 @@ function generateMarkdown(data) {
   ## Usage
   ${data.usage}
   ## License
+  ${lSection}
   ## Contributing
+  ${cSection}
   ## Tests
   ${data.tests}
   ## Questions

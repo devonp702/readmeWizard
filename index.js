@@ -1,12 +1,12 @@
 /**
  * README Wizard!
- * run by writing `node index.js` in your console
+ * Invoke the Wizard by writing `node index.js` in your console
  */
 var fs = require("fs");
 var inquirer = require("inquirer");
+var gm = require("./utils/generateMarkdown")
 // array of questions for user
-const questions = [
-  {
+const questions = [{
     type: "input",
     name: "title",
     message: "Enter your project title:"
@@ -34,14 +34,14 @@ const questions = [
     type: "list",
     name: "license",
     message: "The last section of a good README is a license. This lets other developers know what they can and cannot do with your project.",
-    choices:["MIT", "GNU general public v3.0", "Apache 2.0"]
+    choices: ["MIT", "GNU general public v3.0", "Apache 2.0"]
   },
   // * Contributing
   {
     type: "list",
     name: "contributing",
     message: "If you created something and would like other developers to contribute to it, you will want to add guidelines for how to do so.",
-    choices:["Contributor Covenant", "I want to make my own."]
+    choices: ["Contributor Covenant", "I want to make my own."]
   },
   // * Tests
   {
@@ -63,16 +63,22 @@ const questions = [
 ];
 
 // function to write README file
-function writeToFile(fileName, data) {
-  fs.writeFile(fileName, data);
+function writeToFile(data) {
+  fs.writeFile("newReadMe.md", data, function (err) {
+    if (err) {
+      return console.log(err);
+    }
+    console.log("Your file has been written.");
+  });
 }
 
 // function to initialize program
 function init() {
   inquirer.prompt(questions)
-  .then(answers => console.log(answers))
-  //format the data
-  // writeToFile("README.md", readMe);
+    .then(resp => {
+      var temp = gm.generateMarkdown(resp);
+      writeToFile(temp);
+    })
 }
 
 // function call to initialize program

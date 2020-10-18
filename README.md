@@ -17,7 +17,7 @@
   Create your ReadMe file with markdown created for you by the readmeWizard. The Wizard will ask you a few questions, and POOF! Magically you get a new README file. As a bonus, this readme file was created using readmeWizard.
 
   ## Installation
-  This program runs in node.js \n 1. clone the repo \n 2. run 'npm install' \n 3. invoke the wizard using 'node index.js' \n 4. follow the instructions!
+  This program runs in node.js 1. clone the repo  2. run 'npm install'  3. invoke the wizard using 'node index.js'  4. follow the instructions!
 
   ## Usage
   It's easy, just follow the prompts, and style as you go. when you are done, find the completed file in your root folder. Add a screenshot to your drive, and fix the link. It's that easy!
